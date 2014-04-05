@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,6 +22,11 @@ public class Owner extends Model {
 		this.usename = usename;
 		this.name = name;
 		this.karma = karma;
+	}
+	
+	public void addActivity(Activity act) {
+		if (tasks == null) tasks = new ArrayList<Activity>();
+		tasks.add(act);
 	}
 	
 	
