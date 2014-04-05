@@ -11,14 +11,14 @@ import play.db.ebean.Model;
 public class RoomieAgreement extends Model {
 	
 	public long id;
-	public static List<Owner> roomies;
+	public List<User> roomies;
 	public static List<RoomieAgreement> agreements;
 	
 	static {
-		List<Owner> roomie = new ArrayList<Owner>();
-		Owner test = new Owner(1L, "sergmor", "SDM", 0);
+		List<User> roomie = new ArrayList<User>();
+		User test = new User(1L, "sergmor", "SDM", 0);
 		roomie.add(test);
-		Owner test1 = new Owner(2L, "sergmor1", "SDM1", 1);
+		User test1 = new User(2L, "sergmor1", "SDM1", 1);
 		roomie.add(test1);
 		Activity dish = new Activity(1L, test, "dishes", null);
 		Activity wash = new Activity(1L, test, "wash", null);
@@ -30,10 +30,10 @@ public class RoomieAgreement extends Model {
 		agreements.add(new RoomieAgreement(1L, roomie));
 	}
 	
-	public RoomieAgreement(long id, List<Owner> roomies) {
+	public RoomieAgreement(long id, List<User> roomies) {
 		super();
 		this.id = id;
-		RoomieAgreement.roomies = roomies;
+		this.roomies = roomies;
 	}
 	
 	public static RoomieAgreement findById(long id) {
@@ -44,6 +44,18 @@ public class RoomieAgreement extends Model {
 			}
 		}
 		return res;
+	}
+	
+	public static User findUserById(long id) {
+		for (RoomieAgreement ra : agreements) {
+			List<User> ul = ra.roomies;
+			for(int i=0; i<ul.size(); i++) {
+				if(ul.get(i).id == id) {
+					return ul.get(i);					
+				}
+			}
+		}
+		return null;
 	}
 	
 	

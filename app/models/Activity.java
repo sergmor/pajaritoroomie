@@ -9,12 +9,12 @@ public class Activity extends Model {
 	
 	
 	public long id;
-	public Owner user;
+	public User user;
 	public String name;
 	public Document evidence;
 	public int karmaPoints;
 	
-	public Activity(long id, Owner user, String name, Document evidence) {
+	public Activity(long id, User user, String name, Document evidence) {
 		super();
 		this.id = id;
 		this.user = user;

@@ -8,6 +8,7 @@ GET     /                           controllers.Application.index()
 #Users
 GET		/user/:id					controllers.Users.getUser(id: String)
 POST 	/user/new					controllers.Users.newUser()
+GET		/user/activities:id			controllers.Users.getAllActivities(id: String)
 
 #RAs
 GET		/ra/:id						controllers.RoomieAgreements.getRoomieAgreement(id: String)
