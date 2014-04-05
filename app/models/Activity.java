@@ -19,7 +19,4 @@ public class Activity extends Model {
 		this.user = user;
 		this.evidence = evidence;
 	}
-	
-	
-
 }
