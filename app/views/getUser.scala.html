@@ -1,11 +1,18 @@
-@(message: String)
+@(user: User)
 
 @main("Welcome to Play") {
 
 <div class="container-fluid" style="margin-top:60px">
 	<div class="row">
 		
-		@views.html.sidebar.render
+		<div class="col-md-2">
+			<ul class="nav nav-sidebar">
+				<li class="active"><a href="#">My Activities</a></li>
+				<li><a href="#">All Activities</a></li>
+				<li><a href="#">Group3</a></li>
+				<li><a href="#">Group4</a></li>
+			</ul>
+		</div>
 		<div class="col-md-8">
 			<h2 class="sub-header">Dashboard</h2>
 			<table class="table table-striped">
@@ -54,12 +61,12 @@
 		<!-- left status column -->
 		<div class="col-md-2">
 			<h3 class="sub-header">Group Details</h3>
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Pranav</a></li>
-					<li><a href="#">Prasad</a></li>
-					<li><a href="#">Rohan</a></li>
-					<li><a href="#">Daniel</a></li>
-				</ul>
+			<ul class="nav nav-sidebar">
+				<li class="active"><a href="#">Pranav</a></li>
+				<li><a href="#">Prasad</a></li>
+				<li><a href="#">Rohan</a></li>
+				<li><a href="#">Daniel</a></li>
+			</ul>
 		</div>
 	</div>	
 </div>
