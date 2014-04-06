@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
+//import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 
@@ -41,7 +41,7 @@ import javax.imageio.ImageIO;
 public class Requests extends Controller{
 
 	@BodyParser.Of(BodyParser.Json.class)
-	public static Result newRequest() throws IOException, Base64DecodingException {
+	public static Result newRequest() throws Exception  {
 		JsonNode jsonNode = Controller.request().body().asJson();
 		String email = jsonNode.findPath("email").asText();
 
