@@ -1,12 +1,13 @@
 package controllers;
 
 import models.Activity;
-
+import models.RoomieAgreement;
+import models.User;
 import play.data.Form;
 import play.mvc.Controller;
+import play.mvc.Http.Context;
 import play.mvc.Result;
-
-import views.html.*;
+import views.html.newActivity;
 
 public class Activities extends Controller{
 	
@@ -26,8 +27,11 @@ public class Activities extends Controller{
 			flash("error", "Please correct the form");
 			return badRequest(newActivity.render(boundForm));
 		}
+		String uName = session("email");
+		User u = RoomieAgreement.findByUsername(uName);
 		Activity act = boundForm.get();
-		act.save();
+		act.save(u);
+		u.addActivity(act);
 		flash("success",String.format("Saved activity %s", act.name));
 		return redirect(routes.Users.getUser(Long.toString(act.user.id)));
 	}
