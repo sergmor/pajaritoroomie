@@ -4,6 +4,7 @@ import java.io.File;
 
 import models.Activity;
 import models.Document;
+import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
@@ -33,7 +34,7 @@ public class Documents extends Controller {
 			File file = picture.getFile();
 			System.out.println(file.getAbsolutePath());
 			System.out.println(fileName);
-			String path = "/Users/Dani/" + fileName;
+			String path = "/Users/Dani/playApps/pajaritoroomie/public/images/" + fileName;
 			file.renameTo(new File(path));
 			System.out.println(file.getAbsolutePath());
 
@@ -45,8 +46,8 @@ public class Documents extends Controller {
 			User u = RoomieAgreement.findByUsername(uName);
 		
 			for (Activity act : u.tasks) {
-				if(taskId.equalsIgnoreCase(act.id)) {
-					act.filePath = path;	
+				if(taskId.equalsIgnoreCase(Long.toString(act.id))) {
+					act.filePath = fileName;	
 				}
 			}	  
 

@@ -17,12 +17,19 @@ public class Activity extends Model {
 	public int karmaPoints;
 	public Date dueDate;
 	public boolean complete;
-	public String filePath;
+	public String filePath = "default.jpeg";
 	
 	public Activity() {
 		super();
 	}
-	
+	public Activity(long id, User user, String name, int kp, String filePath) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.name = name;
+		this.karmaPoints = kp;
+		this.filePath = filePath;
+	}
 	public Activity(String name, Document evidence, int kp, Date dd) {
 		super();		
 		this.name = name;

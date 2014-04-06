@@ -1,14 +1,14 @@
-@(ra: RoomieAgreement, user: User)
+@(ra: RoomieAgreement, user: User) @main("Welcome to Play") {
 
-@main("Welcome to Play") {
-
-<div class="container-fluid" style="margin-top:60px">
+<div class="container-fluid" style="margin-top: 60px">
 	<div class="row">
-		
+
 		<div class="col-md-2">
 			<ul class="nav nav-sidebar">
-				<li class="active"><a href='@routes.Users.getUser("1")'>My Activities</a></li>
-				<li><a href='@routes.RoomieAgreements.getRoomieAgreement("1")'>All Activities</a></li>
+				<li class="active"><a href='@routes.Users.getUser("1")'>My
+						Activities</a></li>
+				<li><a href='@routes.RoomieAgreements.getRoomieAgreement("1")'>All
+						Activities</a></li>
 				<li><a href="#">Group3</a></li>
 				<li><a href="#">Group4</a></li>
 			</ul>
@@ -16,15 +16,16 @@
 		<div class="col-md-8">
 			<h2 class="sub-header">Dashboard for @user.usename</h2>
 			<script>
-           function post(urlToPost) {
-              $.ajax({
-                url: urlToPost,
-                type: 'POST',
-                success: function(results) {
-                  // Refresh the page
-                  location.reload();
-                }
-			}); }
+				function post(urlToPost) {
+					$.ajax({
+						url : urlToPost,
+						type : 'POST',
+						success : function(results) {
+							// Refresh the page
+							location.reload();
+						}
+					});
+				}
 			</script>
 			<table class="table table-striped">
 				<thead>
@@ -36,19 +37,17 @@
 				</thead>
 				<tbody>
 					@for(task <- user.tasks) {
-						<tr>
-							<td>@task.name</td>
-							@if(task.complete){
-								<td>Yup</td>
-								}else{
-								<td>Nope</td>
-								}
-							<td>@task.karmaPoints</td>
-							<td><a class="btn btn-default doc" role="button" > <i
-					class="icon icon-trash" data="@task.id"></i> Document </a></td>
-							<!-- <td><a class="imageLinks" href="@routes.Activities.image(task.id)">View Evidence</a></td> -->
-							<td><img src="@task.filePath"></td>
-						</tr>
+					<tr>
+						<td>@task.name</td> @if(task.complete){
+						<td>Yup</td> }else{
+						<td>Nope</td> }
+						<td>@task.karmaPoints</td>
+						<td><a class="btn btn-default doc" role="button"> <i
+								class="icon icon-trash" data="@task.id"></i> Document
+						</a></td>
+						
+						<td><img src='@routes.Assets.at("images/" + task.filePath)' height=50 width=70></td>
+					</tr>
 					}
 				</tbody>
 			</table>
@@ -59,10 +58,9 @@
 			<h3 class="sub-header">Group Details</h3>
 			<ul class="nav nav-sidebar">
 				@for(user <- ra.roomies) {
-					<li class="active"><a href="#">@user.usename</a></li>	
-				}
+				<li class="active"><a href="#">@user.usename</a></li> }
 			</ul>
 		</div>
-	</div>	
+	</div>
 </div>
 }

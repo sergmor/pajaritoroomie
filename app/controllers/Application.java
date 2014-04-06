@@ -17,8 +17,8 @@ public class Application extends Controller {
 	public static Result index() {
 		User u = RoomieAgreement.findByUsername(request().username());
 		RoomieAgreement ra = u.ra;
-		return redirect(routes.RoomieAgreements.getRoomieAgreement(Long.toString(ra.id)));	
-				
+//		return redirect(routes.RoomieAgreements.getRoomieAgreement(Long.toString(ra.id)));	
+		return ok(index.render(""));
 	}
 
 	public static Result login() {
