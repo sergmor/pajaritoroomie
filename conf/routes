@@ -27,4 +27,4 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 # requests
-POST /request/new					controllers.requests.newRequest()
+POST /request/new					controllers.Requests.newRequest()
