@@ -21,6 +21,8 @@ GET		/act/:id					controllers.Activities.getActivity(id: String)
 GET		/act/new					controllers.Activities.newActivity()
 POST	/act						controllers.Activities.save()
 
+#Delivery
+GET 	/stores/:address 			controllers.DeliveryController.getStores(address: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
