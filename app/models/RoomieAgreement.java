@@ -26,7 +26,7 @@ public class RoomieAgreement extends Model {
 		test.addActivity(dish);
 		test.addActivity(wash);
 		test1.addActivity(trash);
-		
+		agreements = new ArrayList<RoomieAgreement>();
 		agreements.add(new RoomieAgreement(1L, roomie));
 	}
 	
