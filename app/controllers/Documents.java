@@ -10,6 +10,7 @@ import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
 import views.html.*;
+import model.*;
 
 
 public class Documents extends Controller {
@@ -22,6 +23,7 @@ public class Documents extends Controller {
 	}
 
 	public static Result newDocument() {
+		 
 		MultipartFormData body = request().body().asMultipartFormData();
 
 		FilePart picture = body.getFile("picture");
@@ -34,11 +36,26 @@ public class Documents extends Controller {
 			String path = "/Users/Dani/" + fileName;
 			file.renameTo(new File(path));
 			System.out.println(file.getAbsolutePath());
+
+			// setting the file path
+			DynamicForm requestData = Form.form().bindFromRequest();
+	  		String taskId = requestData.get("taskId");
+
+			String uName = session("email");
+			User u = RoomieAgreement.findByUsername(uName);
+		
+			for (Activity act : u.tasks) {
+				if(taskId.equalsIgnoreCase(act.id)) {
+					act.filePath = path;	
+				}
+			}	  
+
 			return redirect(routes.Application.index());
 		} else {
 			flash("error", "Missing file");
 			return redirect(routes.Application.index());    
 		}		
+
 	}
 
 }

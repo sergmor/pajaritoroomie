@@ -17,6 +17,7 @@ public class Activity extends Model {
 	public int karmaPoints;
 	public Date dueDate;
 	public boolean complete;
+	public String filePath;
 	
 	public Activity() {
 		super();

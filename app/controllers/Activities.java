@@ -43,7 +43,14 @@ public class Activities extends Controller{
 	}
 	public static Result completeActivity(long id) {
 		  File file = request().body().asRaw().asFile();
+
 		  return ok("File uploaded");
 	}
 	
+	public static Result image(long id) {
+		  String uName = session("email");
+		  User u = RoomieAgreement.findByUsername(uName);
+
+		  return ok("File uploaded");
+	}
 }

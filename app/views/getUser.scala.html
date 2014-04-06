@@ -46,6 +46,8 @@
 							<td>@task.karmaPoints</td>
 							<td><a class="btn btn-default doc" role="button" > <i
 					class="icon icon-trash" data="@task.id"></i> Document </a></td>
+							<!-- <td><a class="imageLinks" href="@routes.Activities.image(task.id)">View Evidence</a></td> -->
+							<td><img src="@task.filePath"></td>
 						</tr>
 					}
 				</tbody>

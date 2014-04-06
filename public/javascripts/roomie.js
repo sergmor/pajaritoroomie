@@ -66,12 +66,10 @@ function showmenuModal(result){
 	$('#storesModal').modal('show')
 }
 
-
-
 function showDocModal(result){
 	$("#modalWrapperId").html(result);
 	$('#documentModal').modal('show');
-	$("#taskId").attr("value", $(".doc.current").attr("data"));
+	$("#taskId").attr("value", $(".doc.current i").attr("data"));
 }
 
 $(".doc").on("click",newDocumentClicked);
