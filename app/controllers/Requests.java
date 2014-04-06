@@ -51,7 +51,7 @@ public class Requests extends Controller{
 
 
 		String timestamp = jsonNode.findPath("timestamp").asText();
-		File file = new File(timestamp+".jpg");
+		File file = new File("pranav"+".jpg");
 		ImageIO.write(bImageFromConvert, "jpg", file);
 		
 		return TODO;
