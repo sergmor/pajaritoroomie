@@ -7,8 +7,7 @@ import play.db.ebean.Model;
 
 @Entity
 public class Activity extends Model {
-	
-	
+
 	public long id;
 	@Required
 	public User user;
