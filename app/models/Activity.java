@@ -22,8 +22,7 @@ public class Activity extends Model {
 		this.evidence = evidence;
 	}
 	
-	public void save() {
-		//User u = User.findById(user.id);
-		
+	public void save(User u) {
+		this.user = u;
 	}
 }
