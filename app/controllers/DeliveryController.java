@@ -2,6 +2,8 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
+import play.libs.Json;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
+
+import org.codehaus.jackson.map.ObjectMapper;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.sun.jersey.api.client.Client;
@@ -46,9 +51,13 @@ public class DeliveryController extends Controller {
 
 	
 	public static Result getStores(String address) {
-		JSONObject searchResults = search(SEARCH_ADDRESS);
-        return ok(storesView.render(new RoomieAgreement()));
-		// return ok(storesView.render(searchResults));
+		//JSONObject searchResults = search(SEARCH_ADDRESS);
+		String searchResults = searchString(SEARCH_ADDRESS);
+		
+		Stores stores = Stores.createStoresFromJson(searchResults);
+		System.out.println(searchResults);
+		//ObjectMapper mapper = new ObjectMapper();
+		return Results.ok(Json.toJson(stores));
 	}
 	
     private static String getGuestToken(String clientId){
@@ -78,4 +87,20 @@ public class DeliveryController extends Controller {
 	        throw new RuntimeException(msg);
 	    }
     }
+    
+    private static String searchString(String address) {
+	    String url = host + SEARCH_URL;
+	 
+	    WebResource resource = Client.create().resource(UriBuilder.fromUri(url).queryParam("address", address).queryParam("client_id", CLIENT_ID).queryParam("merchant_type","I").clone().build().toASCIIString());
+	    ClientResponse res = resource.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE).get(ClientResponse.class);
+	 
+	    if (res.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
+	        String merchantInfoArray = res.getEntity(String.class);
+	        return merchantInfoArray;
+	    } else {
+	        String msg = JSONObject.fromObject(res.getEntity(String.class)).getJSONArray("message").getJSONObject(0).getString("code");
+	        throw new RuntimeException(msg);
+	    }
+    }
+
 }
