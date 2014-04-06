@@ -36,6 +36,10 @@ public class RoomieAgreement extends Model {
 		agreements.add(tempRa);
 	}
 	
+	public RoomieAgreement() {
+		
+	}
+	
 	public RoomieAgreement(long id, List<User> roomies, String agreementName) {
 		super();
 		this.id = id;
@@ -58,6 +62,18 @@ public class RoomieAgreement extends Model {
 			List<User> ul = ra.roomies;
 			for(int i=0; i<ul.size(); i++) {
 				if(ul.get(i).id == id) {
+					return ul.get(i);					
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static User findByUsername(String uName) {
+		for (RoomieAgreement ra : agreements) {
+			List<User> ul = ra.roomies;
+			for(int i=0; i<ul.size(); i++) {
+				if(ul.get(i).usename == uName) {
 					return ul.get(i);					
 				}
 			}

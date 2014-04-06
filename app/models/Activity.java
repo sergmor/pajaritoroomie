@@ -8,8 +8,7 @@ import play.db.ebean.Model;
 @Entity
 public class Activity extends Model {
 
-	public long id;
-	@Required
+	public long id;	
 	public User user;
 	public String name;
 	public Document evidence;
@@ -24,6 +23,7 @@ public class Activity extends Model {
 	}
 	
 	public void save() {
+		//User u = User.findById(user.id);
 		
 	}
 }

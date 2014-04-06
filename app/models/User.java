@@ -41,4 +41,8 @@ public class User extends Model {
 		this.ra = ra;
 	}
 	
+	public static User authenticate(String email, String pwd) {
+		return RoomieAgreement.findByUsername(email);
+	}
+	
 }

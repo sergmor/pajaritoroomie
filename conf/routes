@@ -4,7 +4,11 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-
+#login
+GET     /login                  	controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+#logout
+GET     /logout                  	controllers.Application.logout()
 #Users
 GET		/user/:id					controllers.Users.getUser(id: String)
 POST 	/user/new					controllers.Users.newUser()
