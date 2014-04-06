@@ -41,6 +41,4 @@ public class User extends Model {
 		this.ra = ra;
 	}
 	
-	
-	
 }
