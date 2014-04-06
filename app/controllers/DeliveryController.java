@@ -17,6 +17,7 @@ import com.sun.jersey.api.client.WebResource;
 
 
 import views.html.*;
+import models.*;
 
 public class DeliveryController extends Controller {
     final static String host = "http://sandbox.delivery.com/";
@@ -46,7 +47,8 @@ public class DeliveryController extends Controller {
 	
 	public static Result getStores(String address) {
 		JSONObject searchResults = search(SEARCH_ADDRESS);
-		return TODO;
+        return ok(storesView.render(new RoomieAgreement()));
+		// return ok(storesView.render(searchResults));
 	}
 	
     private static String getGuestToken(String clientId){
@@ -76,6 +78,4 @@ public class DeliveryController extends Controller {
 	        throw new RuntimeException(msg);
 	    }
     }
-     
-
 }

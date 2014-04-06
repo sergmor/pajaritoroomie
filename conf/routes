@@ -17,10 +17,12 @@ POST	/ra/new 					controllers.RoomieAgreements.newRoomieAgreement()
 POST	/ra/new/:id					controllers.RoomieAgreements.newRoomie(id: String)
 
 #Activities
-GET		/act/:id					controllers.Activities.getActivity(id: String)
 GET		/act/new					controllers.Activities.newActivity()
+GET		/act/:id					controllers.Activities.getActivity(id: String)
 POST	/act						controllers.Activities.save()
 
+#Delivery
+GET 	/stores/:address 			controllers.DeliveryController.getStores(address: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
