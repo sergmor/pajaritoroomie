@@ -16,3 +16,40 @@ function showModal(result){
 }
 
 $("#addActivityId").on("click",newActivityClicked);
+
+function shopClicked(){
+	$.ajax({
+	  url: "/delivery/stores/1330%201st%20Ave,%2010021",
+	  type: "GET",
+	  success: function(result){
+	  	showShopModal(result)
+	  }
+	});
+}
+
+function showShopModal(result){
+	$("#modalWrapperId").html(result);
+	$('#storesModal').modal('show');
+	$(".menulink").on("click",menulinkClicked);
+}
+
+$("#shopId").on("click",shopClicked);
+
+
+function menulinkClicked(){
+	var url = $(this).attr("url")
+	$.ajax({
+	  url: url,
+	  type: "GET",
+	  success: function(result){
+	  	showmenuModal(result)
+	  }
+	});
+}
+
+function showmenuModal(result){
+	$("#modalWrapperId .modal-body").html(result);
+	$('#storesModal').modal('show')
+}
+
+

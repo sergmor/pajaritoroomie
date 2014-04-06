@@ -15,20 +15,21 @@
 		</div>
 		<div class="col-md-8">
 			<h2 class="sub-header">Dashboard for @ra.agreementName</h2>
+			<a class="btn btn-lg btn-primary" href="#" id="shopId" role="button">Shop</a>
 			<a class="btn btn-lg btn-primary" href="#" id="addActivityId" role="button">Add Activity</a>
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Tasks</th>
 						<th>Users</th>
+						<th>Tasks</th>
 					</tr>
 				</thead>
 				<tbody>
 					@for(user <- ra.roomies) {
 						@for(task <- user.tasks) {
 							<tr>
-								<td>1,001</td>
+								<td>1002</td>
 								<td>@user.usename</td>
 								<td>@task.name</td>
 							</tr>

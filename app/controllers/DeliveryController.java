@@ -7,6 +7,7 @@ import play.libs.Json;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import javax.ws.rs.core.MediaType;
@@ -37,8 +38,8 @@ public class DeliveryController extends Controller {
     final static String LOCATION_URL = "customer/location";
     final static String ORDER_URL = "customer/orders/recent";
     final static String SEARCH_URL = "merchant/search/delivery";    
-    //final static String SEARCH_ADDRESS = "1330 1st Ave, 10021";
-    final static String SEARCH_ADDRESS = "2960 Broadway, 10027";
+    final static String SEARCH_ADDRESS = "1330 1st Ave, 10021";
+    //final static String SEARCH_ADDRESS = "2960 Broadway, 10027";
     final static String ADDRESS_APT = "Apt 123";    
     final static String CLIENT_ID = "YmRlOWRjYTFkNjUzZjY0MTlmMzhhNjBkMzBjZGEzNDA1";    
     final static String ORDER_TYPE = "delivery";
@@ -55,10 +56,25 @@ public class DeliveryController extends Controller {
 		String searchResults = searchString(SEARCH_ADDRESS);
 		
 		Stores stores = Stores.createStoresFromJson(searchResults);
-		System.out.println(searchResults);
-		//ObjectMapper mapper = new ObjectMapper();
-		return Results.ok(Json.toJson(stores));
+		try {
+		PrintWriter writer = new PrintWriter("menu.json", "UTF-8");
+		writer.println(menu(27484));
+		writer.close();
+		} catch (Exception e){}
+		//return Results.ok(Json.toJson(stores));		
+		return ok(storesView.render(stores));
 	}
+	
+	public static Result getMenus(Integer id) {
+		//JSONObject searchResults = search(SEARCH_ADDRESS);
+		String searchResults = menu(id);
+		
+		Menus menus = Menus.createMenusFromJson(searchResults);
+		System.out.println(menus);
+		//return Results.ok(Json.toJson(menus));		
+		return ok(menusView.render(menus));
+	}
+	
 	
     private static String getGuestToken(String clientId){
     	WebResource resource = Client.create().resource(UriBuilder.fromUri(host + GUEST_TOKEN_URL).queryParam("client_id", clientId).clone().build().toASCIIString());
@@ -102,5 +118,21 @@ public class DeliveryController extends Controller {
 	        throw new RuntimeException(msg);
 	    }
     }
+    
+    private static String menu(int merchantId) {
+	    String url = host + "merchant/" + merchantId + "/menu?item_only=1";
+	    //.queryParam("item_only", "1")
+	    WebResource resource = Client.create()
+	        .resource(UriBuilder.fromUri(url).clone().build().toASCIIString());
+	    ClientResponse res = resource.type(MediaType.APPLICATION_FORM_URLENCODED_TYPE).get(ClientResponse.class);
+	 
+	    if (res.getStatus() == ClientResponse.Status.OK.getStatusCode()) {
+	        String inventory = res.getEntity(String.class);
+	        return inventory;
+	    } else {
+	        throw new RuntimeException(JSONObject.fromObject(res.getEntity(String.class)).getJSONArray("message").getJSONObject(0).getString("code"));
+	    }
+    }
+    
 
 }

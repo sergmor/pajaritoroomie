@@ -17,9 +17,9 @@ public class RoomieAgreement extends Model {
 	
 	static {
 		List<User> roomie = new ArrayList<User>();
-		User test = new User(1L, "sergmor", "SDM", 0);
+		User test = new User(1L, "sergmor", "SDM", 0, "567 W 125 Street, 10027");
 		roomie.add(test);
-		User test1 = new User(2L, "sergmor1", "SDM1", 1);
+		User test1 = new User(2L, "sergmor1", "SDM1", 1, "567 W 125 Street, 10027");
 		roomie.add(test1);
 		Activity dish = new Activity(1L, test, "dishes", null);
 		Activity wash = new Activity(1L, test, "wash", null);
