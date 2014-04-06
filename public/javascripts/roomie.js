@@ -74,5 +74,4 @@ function showDocModal(result){
 	$("#taskId").attr("value", $(".doc.current").attr("data"));
 }
 
-$(".doc").on("click",newDocumentClicked)
-
+$(".doc").on("click",newDocumentClicked);
