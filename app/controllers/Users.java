@@ -11,7 +11,7 @@ public class Users extends Controller {
 	public static Result getUser(String id) {
 		// id is the roomate agreement id
 		User user = User.findById(Long.valueOf(id));
-		return ok(getUser.render(user));
+		return ok(getUser.render(user.ra, user));
 	}
 	
 	public static Result getAllActivities(String id) {

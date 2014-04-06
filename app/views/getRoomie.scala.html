@@ -1,4 +1,4 @@
-@(ra: RoomieAgreement, user: User)
+@(ra: RoomieAgreement)
 
 @main("Welcome to Play") {
 
@@ -14,7 +14,7 @@
 			</ul>
 		</div>
 		<div class="col-md-8">
-			<h2 class="sub-header">Dashboard for @user.usename</h2>
+			<h2 class="sub-header">Dashboard for @ra.agreementName</h2>
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -24,12 +24,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					@for(task <- user.tasks) {
-						<tr>
-							<td>1,001</td>
-							<td>@user.usename</td>
-							<td>@task.name</td>
-						</tr>
+					@for(user <- ra.roomies) {
+						@for(task <- user.tasks) {
+							<tr>
+								<td>1,001</td>
+								<td>@user.usename</td>
+								<td>@task.name</td>
+							</tr>
+						}
 					}
 				</tbody>
 			</table>

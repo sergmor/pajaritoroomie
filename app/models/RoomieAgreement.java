@@ -12,6 +12,7 @@ public class RoomieAgreement extends Model {
 	
 	public long id;
 	public List<User> roomies;
+	public String agreementName;
 	public static List<RoomieAgreement> agreements;
 	
 	static {
@@ -26,14 +27,20 @@ public class RoomieAgreement extends Model {
 		test.addActivity(dish);
 		test.addActivity(wash);
 		test1.addActivity(trash);
+		// adding the agreement back to users
+		RoomieAgreement tempRa = new RoomieAgreement(1L, roomie, "bhakchods");
+		test.ra = tempRa;
+		test1.ra = tempRa;
+
 		agreements = new ArrayList<RoomieAgreement>();
-		agreements.add(new RoomieAgreement(1L, roomie));
+		agreements.add(tempRa);
 	}
 	
-	public RoomieAgreement(long id, List<User> roomies) {
+	public RoomieAgreement(long id, List<User> roomies, String agreementName) {
 		super();
 		this.id = id;
 		this.roomies = roomies;
+		this.agreementName = agreementName;
 	}
 	
 	public static RoomieAgreement findById(long id) {
