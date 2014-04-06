@@ -46,7 +46,7 @@ public class DeliveryController extends Controller {
 	
 	public static Result getStores(String address) {
 		JSONObject searchResults = search(SEARCH_ADDRESS);
-		return TODO;
+		return ok(storesView.render(searchResults));
 	}
 	
     private static String getGuestToken(String clientId){

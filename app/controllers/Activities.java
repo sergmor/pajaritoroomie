@@ -6,6 +6,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import views.html.*;
 
 public class Activities extends Controller{
 	
@@ -15,7 +16,7 @@ public class Activities extends Controller{
 		return TODO;
 	}
 	
-	public static Result newActivity() {		
+	public static Result newActivity() {
 		return ok(newActivity.render(activityForm));		
 	}
 	
