@@ -1,13 +1,19 @@
 package models;
 
-import java.net.URI;
+import play.db.ebean.Model;
 
-import javax.persistence.Entity;
 
-@Entity
-public class Document {
+public class Document{
 
-	public URI data;
+	public byte[] picture; 
+	
+	public Document() {
+		
+	}
+	
+	public Document(byte[] data) {
+		this.picture= data;
+	}
 	
 	
 }

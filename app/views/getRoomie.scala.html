@@ -7,30 +7,35 @@
 		
 		<div class="col-md-2">
 			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#">My Activities</a></li>
-				<li><a href="#">All Activities</a></li>
+				<li class="active"><a href='@routes.Users.getUser("1")'>My Activities</a></li>
+				<li><a href='@routes.RoomieAgreements.getRoomieAgreement("1")'>All Activities</a></li>
 				<li><a href="#">Group3</a></li>
 				<li><a href="#">Group4</a></li>
 			</ul>
 		</div>
 		<div class="col-md-8">
 			<h2 class="sub-header">Dashboard for @ra.agreementName</h2>
+			<a class="btn btn-lg btn-primary" href="#" id="shopId" role="button">Shop</a>
 			<a class="btn btn-lg btn-primary" href="#" id="addActivityId" role="button">Add Activity</a>
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>Tasks</th>
-						<th>Users</th>
+						<th>Task</th>
+						<th>Responsible</th>
+						<th>Completed</th>
 					</tr>
 				</thead>
 				<tbody>
 					@for(user <- ra.roomies) {
 						@for(task <- user.tasks) {
 							<tr>
-								<td>1,001</td>
-								<td>@user.usename</td>
 								<td>@task.name</td>
+								<td>@user.usename</td>
+								@if(task.complete){
+								<td>Yup</td>
+								}else{
+								<td>Nope</td>
+								}
 							</tr>
 						}
 					}

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
-@Entity
+
 public class User extends Model {
 
 	public long id;
@@ -17,13 +17,15 @@ public class User extends Model {
 	public String name;
 	public List<Activity> tasks;
 	public int karma;
+	public String address;
 	
-	public User(long id, String usename, String name, int karma) {
+	public User(long id, String usename, String name, int karma, String address) {
 		super();
 		this.id = id;
 		this.usename = usename;
 		this.name = name;
 		this.karma = karma;
+		this.address = address;
 	}
 	
 	//public static Finder<String, User> find = new Finder<String,User>(String.class, User.class);

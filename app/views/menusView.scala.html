@@ -1,0 +1,18 @@
+@(menus: Menus)
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+		</tr>
+	</thead>
+	<tbody>
+		@for(menu <- menus.menu) {
+		<tr>
+			<td>@menu.id</td>
+			<td>@menu.name</td>			
+		</tr>
+	}
+</tbody>
+</table>
