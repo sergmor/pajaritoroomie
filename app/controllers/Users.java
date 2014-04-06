@@ -8,6 +8,7 @@ public class Users extends Controller {
 
 	public static Result getUser(String id) {
 		User us = User.findById(Long.valueOf(id));
+		
 		return TODO;
 	}
 	
