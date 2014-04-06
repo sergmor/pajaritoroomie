@@ -17,8 +17,9 @@ import org.json.simple.parser.ParseException;
 import com.fasterxml.jackson.databind.JsonNode;
 
 //import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
 
+
+import com.sun.jersey.core.util.Base64;
 
 import play.libs.Json;
 import play.mvc.BodyParser;
@@ -34,9 +35,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.imageio.*;
-
-
-import javax.imageio.ImageIO;
 
 public class Requests extends Controller{
 
