@@ -15,7 +15,7 @@ public class Requests extends Controller{
 		MultipartFormData body = request().body().asMultipartFormData();
 		System.out.println(body);		
 
-		FilePart picture = body.getFile("pranav");
+		FilePart picture = body.getFile("file");
 		System.out.println("here");
 		if (picture != null) {
 			System.out.println("if");
@@ -25,7 +25,7 @@ public class Requests extends Controller{
 			File file = picture.getFile();
 			System.out.println(file.getAbsolutePath());
 			System.out.println(fileName);
-			String path = "/Users/Apple/" + fileName;
+			String path = "/Users/Dani/" + fileName;
 			file.renameTo(new File(path));
 			System.out.println(file.getAbsolutePath());
 			return redirect(routes.Application.index());
