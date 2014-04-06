@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 import play.db.ebean.Model;
 
-@Entity
+
 public class RoomieAgreement extends Model {
 	
 	public long id;
@@ -21,9 +21,9 @@ public class RoomieAgreement extends Model {
 		roomie.add(test);
 		User test1 = new User(2L, "sergmor1@gmail.com", "SDM1", 1);
 		roomie.add(test1);
-		Activity dish = new Activity(1L, test, "dishes", null);
-		Activity wash = new Activity(1L, test, "wash", null);
-		Activity trash = new Activity(1L, test1, "trash", null);
+		Activity dish = new Activity(1L, test, "dishes", 10);
+		Activity wash = new Activity(1L, test, "wash", 14);
+		Activity trash = new Activity(1L, test1, "trash", 15);
 		test.addActivity(dish);
 		test.addActivity(wash);
 		test1.addActivity(trash);
@@ -80,6 +80,8 @@ public class RoomieAgreement extends Model {
 		}
 		return null;
 	}
+	
+	
 	
 	
 	
