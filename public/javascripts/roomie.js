@@ -10,7 +10,7 @@ function newActivityClicked(){
 	});
 }
 
-function showModal(){
+function showModal(result){
 	$("#modalWrapperId").html(result);
 	$('#activityModal').modal('show')
 }

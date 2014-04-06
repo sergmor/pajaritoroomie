@@ -17,8 +17,8 @@ POST	/ra/new 					controllers.RoomieAgreements.newRoomieAgreement()
 POST	/ra/new/:id					controllers.RoomieAgreements.newRoomie(id: String)
 
 #Activities
-GET		/act/:id					controllers.Activities.getActivity(id: String)
 GET		/act/new					controllers.Activities.newActivity()
+GET		/act/:id					controllers.Activities.getActivity(id: String)
 POST	/act						controllers.Activities.save()
 
 #Delivery
