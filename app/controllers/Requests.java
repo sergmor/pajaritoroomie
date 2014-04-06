@@ -15,8 +15,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
 import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
+
 
 import play.libs.Json;
 import play.mvc.BodyParser;
@@ -30,7 +32,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.imageio.*;
+
 
 import javax.imageio.ImageIO;
 
@@ -40,11 +44,13 @@ public class Requests extends Controller{
 	public static Result newRequest() throws IOException, Base64DecodingException {
 		JsonNode jsonNode = Controller.request().body().asJson();
 		String email = jsonNode.findPath("email").asText();
+
 		String Stringpicture = jsonNode.findPath("file").asText();
 		
 		byte[] fileBytes = Base64.decode(Stringpicture);
 		InputStream in = new ByteArrayInputStream(fileBytes);
 		BufferedImage bImageFromConvert = ImageIO.read(in);
+
 
 		String timestamp = jsonNode.findPath("timestamp").asText();
 		File file = new File(timestamp+".jpg");

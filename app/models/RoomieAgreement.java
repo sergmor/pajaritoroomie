@@ -17,9 +17,9 @@ public class RoomieAgreement extends Model {
 	
 	static {
 		List<User> roomie = new ArrayList<User>();
-		User test = new User(1L, "sergmor", "SDM", 0);
+		User test = new User(1L, "sergmor@gmail.com", "SDM", 0);
 		roomie.add(test);
-		User test1 = new User(2L, "sergmor1", "SDM1", 1);
+		User test1 = new User(2L, "sergmor1@gmail.com", "SDM1", 1);
 		roomie.add(test1);
 		Activity dish = new Activity(1L, test, "dishes", null);
 		Activity wash = new Activity(1L, test, "wash", null);
@@ -73,7 +73,7 @@ public class RoomieAgreement extends Model {
 		for (RoomieAgreement ra : agreements) {
 			List<User> ul = ra.roomies;
 			for(int i=0; i<ul.size(); i++) {
-				if(ul.get(i).usename == uName) {
+				if(ul.get(i).usename.equalsIgnoreCase(uName)) {
 					return ul.get(i);					
 				}
 			}
