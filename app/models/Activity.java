@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.Entity;
 
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 @Entity
@@ -9,6 +10,7 @@ public class Activity extends Model {
 	
 	
 	public long id;
+	@Required
 	public User user;
 	public String name;
 	public Document evidence;
@@ -20,5 +22,9 @@ public class Activity extends Model {
 		this.user = user;
 		this.name = name;
 		this.evidence = evidence;
+	}
+	
+	public void save() {
+		
 	}
 }
