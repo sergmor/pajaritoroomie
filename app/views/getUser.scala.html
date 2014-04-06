@@ -15,22 +15,37 @@
 		</div>
 		<div class="col-md-8">
 			<h2 class="sub-header">Dashboard for @user.usename</h2>
-			<a class="btn btn-lg btn-primary" href="#" id="shopId" role="button">Shop</a>
+			<script>
+           function post(urlToPost) {
+              $.ajax({
+                url: urlToPost,
+                type: 'POST',
+                success: function(results) {
+                  // Refresh the page
+                  location.reload();
+                }
+			}); }
+			</script>
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>Users</th>
-						<th>Tasks</th>						
+						<th>Tasks</th>
+						<th>Completed</th>
+						<th>Karma Points</th>
 					</tr>
 				</thead>
 				<tbody>
 					@for(task <- user.tasks) {
 						<tr>
-							<td>1001</td>
-							<td>@user.usename</td>
 							<td>@task.name</td>
-							
+							@if(task.complete){
+								<td>Yup</td>
+								}else{
+								<td>Nope</td>
+								}
+							<td>@task.karmaPoints</td>
+							<td><a class="btn btn-default doc" role="button" > <i
+					class="icon icon-trash" data="@task.id"></i> Document </a></td>
 						</tr>
 					}
 				</tbody>

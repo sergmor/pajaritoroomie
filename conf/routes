@@ -14,6 +14,7 @@ GET		/user/:id					controllers.Users.getUser(id: String)
 POST 	/user/new					controllers.Users.newUser()
 GET		/user/activities:id			controllers.Users.getAllActivities(id: String)
 
+
 #RAs
 GET		/ra/:id						controllers.RoomieAgreements.getRoomieAgreement(id: String)
 GET		/ra/act/					controllers.RoomieAgreements.getAllActivities()
@@ -24,6 +25,11 @@ POST	/ra/new/:id					controllers.RoomieAgreements.newRoomie(id: String)
 GET		/act/new					controllers.Activities.newActivity()
 GET		/act/:id					controllers.Activities.getActivity(id: String)
 POST	/act						controllers.Activities.save()
+POST	/act/complete/:id			controllers.Activities.completeActivity(id: Long)
+#Document
+GET		/doc/new					controllers.Documents.showUpload()
+POST	/doc/new					controllers.Documents.newDocument()
+
 
 #Delivery
 GET 	/delivery/stores/:address 			controllers.DeliveryController.getStores(address: String)

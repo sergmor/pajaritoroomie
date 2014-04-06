@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
-@Entity
+
 public class User extends Model {
 
 	public long id;

@@ -14,10 +14,9 @@
 				@helper.form(action = routes.Activities.save()){
 				<fieldset>
 					<legend>Activity (@activityForm("name").valueOr("New"))</legend>
-					@helper.inputText(activityForm("name"), '_label -> "Name")
-					@helper.inputText(activityForm("evidence"), '_label -> "Evidence")
-					@helper.inputText(activityForm("karmaPoints"), '_label -> "KarmaPoints")
-					@helper.inputText(activityForm("user.id"), '_label -> "Roomie")
+					@helper.inputText(activityForm("name"), '_label -> "Name")					
+					@helper.inputText(activityForm("karmaPoints"), '_label -> "Karma Points")
+					@helper.inputText(activityForm("dueDate"), '_label -> "Due Date")					
 				</fieldset>
 				<input type="submit" class="btn btn-primary" value="Save">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -20,18 +20,22 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>Users</th>
-						<th>Tasks</th>
+						<th>Task</th>
+						<th>Responsible</th>
+						<th>Completed</th>
 					</tr>
 				</thead>
 				<tbody>
 					@for(user <- ra.roomies) {
 						@for(task <- user.tasks) {
 							<tr>
-								<td>1002</td>
-								<td>@user.usename</td>
 								<td>@task.name</td>
+								<td>@user.usename</td>
+								@if(task.complete){
+								<td>Yup</td>
+								}else{
+								<td>Nope</td>
+								}
 							</tr>
 						}
 					}
